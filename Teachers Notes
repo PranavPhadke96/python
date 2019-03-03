@@ -81,3 +81,24 @@ class Thief:
 Usually, though, you don't want to update .__dict__ directly as it's mostly meant to be a read-only resource. Just because you can write to it doesn't mean you should!
         
         
+Inheritance in Python is both easier and harder than in some other languages. Python's inheritance usually works exactly how you expect it to. The child classes, or subclasses, get all of the attributes and methods of their parents and grandparents and so on. But thanks to things like the "method resolution order (MRO)", which we'll talk about later, sometimes it's not that simple. But let's not worry about that just yet! Make sure you understand these terms before moving on:
+
+Parent or Super class: the class that a class inherits from. These can go on for a long way, too, so be sure to consider grandparent and great-grandparent classes, too.
+All classes have the ultimate ancestor of object.
+
+Child or Sub class: the class that inherits from a particular class.
+Consider this:
+
+class Symbol:
+    pass
+
+
+class Letter(Symbol):
+    pass
+
+
+class Alpha(Letter):
+    pass
+The class Letter has two superclasses: Symbol and object (since Symbol inherits from object even though we didn't explicitly state it). Letter has one subclass, Alpha.
+
+An instance of the class Alpha could use any attributes or methods that were defined on Symbol or Letter. Those two classes, though, wouldn't have access to attributes or methods that belonged to Alpha. Inheritance is a one-way street.
